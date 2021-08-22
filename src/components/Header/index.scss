@@ -1,0 +1,77 @@
+@import "../../assets/sass/variables";
+
+.header {
+  width: 100%;
+
+  &-heading {
+    padding: 1rem 0;
+
+    &__subtitle {
+      text-align: center;
+      font-weight: 300;
+      letter-spacing: .5rem;
+    }
+
+    &__title {
+      font-size: 6rem;
+      text-align: center;
+      font-weight: bold;
+      font-family: 'Playfair';
+      margin-top: 1.5rem;
+    }
+  }
+
+  &-nav {
+    margin-top: 1rem;
+    border-top: 1px solid $gray-700;
+    border-bottom: 1px solid $gray-700;
+
+    &-items {
+      width: 100%;
+    }
+
+    &-items-block {
+      padding: 1rem;
+      text-align: center;
+      font-size: .9rem;
+      border-right: 1px solid $gray-700;
+
+      &:first-child {
+        border-left: 1px solid $gray-700;
+      }
+
+      &.search {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      &__link {
+        color: $gray-800;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-primary;
+        }
+
+        &.social-icon {
+          display: inline-block;
+          transform: scale(1.2);
+          margin: 0 .5rem;
+        }
+      }
+
+      &__search-input {
+        width: 85%;
+        border: none;
+        background: none;
+        outline: none;
+
+        &::placeholder {
+          color: $gray-800;
+        }
+      }
+    }
+
+  }
+}

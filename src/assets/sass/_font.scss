@@ -1,3 +1,5 @@
+@import "../fonts/ThemifyIcons/themify-icons.scss";
+
 @font-face {
   font-family: OpenSans;
   font-style: normal;
@@ -20,4 +22,12 @@
   font-weight: 300;
   font-display: swap;
   src: url('../fonts/OpenSans/OpenSans-Light.ttf');
+}
+
+@font-face {
+  font-family: Playfair;
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('../fonts/Playfair/PlayfairDisplay-Bold.ttf');
 }
