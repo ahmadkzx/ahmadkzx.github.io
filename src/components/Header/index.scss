@@ -4,16 +4,16 @@
   width: 100%;
 
   &-heading {
-    padding: 1rem 0;
+    padding: 2.5rem 0 1rem 0;
 
     &__subtitle {
       text-align: center;
       font-weight: 300;
-      letter-spacing: .5rem;
+      letter-spacing: .6rem;
     }
 
     &__title {
-      font-size: 6rem;
+      font-size: 6.5rem;
       text-align: center;
       font-weight: bold;
       font-family: 'Playfair';
@@ -22,7 +22,7 @@
   }
 
   &-nav {
-    margin-top: 1rem;
+    margin-top: 2rem;
     border-top: 1px solid $gray-700;
     border-bottom: 1px solid $gray-700;
 

@@ -1,4 +1,6 @@
 import './index.scss'
+import { Link } from 'react-router-dom'
+import { navigation, socialLinks } from '../../config'
 
 export default function Header() {
   return (
@@ -13,26 +15,29 @@ export default function Header() {
       <div className="header-nav">
         <div className="container">
           <div className="row nav-items">
-            <div className="col-2 header-nav-items-block">
-              <a href="https://google.com" className="header-nav-items-block__link">Home</a>
-            </div>
-            <div className="col-2 header-nav-items-block">
-              <a href="https://google.com" className="header-nav-items-block__link">About</a>
-            </div>
-            <div className="col-2 header-nav-items-block">
-              <a href="https://google.com" className="header-nav-items-block__link">Posts</a>
-            </div>
-            <div className="col-2 header-nav-items-block">
-              <a href="https://google.com" className="header-nav-items-block__link">Contact</a>
-            </div>
+            
+            { navigation.map((nav, index) => (
+              <div className="col-2 header-nav-items-block" key={ 'nav-header-' + index }>
+                <Link to={ nav.path } className="header-nav-items-block__link">{ nav.title }</Link>
+              </div>
+            )) }
+
             <div className="col-2 header-nav-items-block search">
               <input type="text" placeholder="Search..." className="header-nav-items-block__search-input" />
               <i className="ti-search"></i>
             </div>
+
             <div className="col-2 header-nav-items-block">
-              <a href="https://google.com" className="header-nav-items-block__link social-icon"><i className="ti-linkedin"></i></a>
-              <a href="https://google.com" className="header-nav-items-block__link social-icon"><i className="ti-github"></i></a>
-              <a href="https://google.com" className="header-nav-items-block__link social-icon"><i className="ti-stack-overflow"></i></a>
+              { socialLinks.map((social, index) => (
+                <a
+                  rel="nofollow"
+                  href={ social.link }
+                  key={ 'social-header-' + index }
+                  className="header-nav-items-block__link social-icon"
+                >
+                  <i className={ social.icon }></i>
+                </a>
+              )) }
             </div>
           </div>
         </div>
