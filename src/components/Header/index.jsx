@@ -14,7 +14,7 @@ export default function Header() {
 
       <div className="header-nav">
         <div className="container">
-          <div className="row nav-items">
+          <div className="row header-nav-items">
             
             { navigation.map((nav, index) => (
               <div className="col-2 header-nav-items-block" key={ 'nav-header-' + index }>
