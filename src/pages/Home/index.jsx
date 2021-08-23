@@ -1,6 +1,6 @@
 import './index.scss'
-import PostItem from '../../components/PostItem'
-import FeaturedPost from '../../components/FeaturedPost'
+import PostItem from '../../components/Global/PostItem'
+import FeaturedPost from '../../components/Home/FeaturedPost'
 
 export default function HomePage() {
   return (

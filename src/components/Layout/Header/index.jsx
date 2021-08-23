@@ -1,6 +1,6 @@
 import './index.scss'
 import { Link } from 'react-router-dom'
-import { navigation, socialLinks } from '../../config'
+import { navigation, socialLinks } from '../../../config'
 
 export default function Header() {
   return (
