@@ -6,7 +6,7 @@ export default function FeaturedPost() {
     <div className="post">
       <span className="post__badge">FEATURED POST</span>
 
-      <Link className="post__photo">
+      <Link to="/" className="post__photo">
         <img src="https://static.wixstatic.com/media/c22c23_89024a2cd2e943a6b89d99404958e3bb~mv2.jpg/v1/fill/w_1677,h_944,fp_0.50_0.50,q_90/c22c23_89024a2cd2e943a6b89d99404958e3bb~mv2.webp" alt="" />
       </Link>
 
@@ -16,7 +16,7 @@ export default function FeaturedPost() {
           <span className="post-content-detail__read-duration"><i className="ti-time"></i> 10 min</span>
         </div>
 
-        <Link className="post-content__title">
+        <Link to="/" className="post-content__title">
           <h5 className="post-content__title">Back to Fiction: What I'm Reading This Summer</h5>
         </Link>
 
