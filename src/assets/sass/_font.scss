@@ -31,3 +31,9 @@
   font-display: swap;
   src: url('../fonts/Playfair/PlayfairDisplay-Bold.ttf');
 }
+
+@include media-breakpoint-down('md') {
+  html {
+    font-size: 14px;
+  }
+}
