@@ -5,6 +5,20 @@ import { navigation, socialLinks } from '../../../config'
 export default function Header() {
   return (
     <header className="header">
+
+      <div className="header-mobile-top">
+        <div className="container">
+          <div className="header-mobile-top-search">
+            <input type="text" className="header-mobile-top-search__input" placeholder="Search..." />
+            <i className="ti-search header-mobile-top-search__icon"></i>
+          </div>
+
+          <div className="header-mobile-top-nav">
+            <button className="header-mobile-top-nav__btn"><i className="ti-menu"></i></button>
+          </div>
+        </div>
+      </div>
+
       <div className="container">
         <div className="header-heading">
           <h4 className="header-heading__subtitle">EVERY THING HERE IS ABOUT PROGRAMMING.</h4>
