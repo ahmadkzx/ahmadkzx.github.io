@@ -1,4 +1,5 @@
-import Home from './pages/Home'
+import HomePage from './pages/Home'
+import PostPage from './pages/Post'
 import Header from './components/Layout/Header'
 import Footer from './components/Layout/Footer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -8,7 +9,8 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Route exact path="/" component={ Home } />
+        <Route exact path="/" component={ HomePage } />
+        <Route exact path="/post/:id/:slug" component={ PostPage } />
         <Footer />
       </Router>
     </div>

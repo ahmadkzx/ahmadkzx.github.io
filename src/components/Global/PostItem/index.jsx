@@ -5,7 +5,7 @@ export default function PostItem() {
   return (
     <div className="post-item">
       
-      <Link to="/" className="post-item__photo">
+      <Link to="/post/2535/test" className="post-item__photo">
         <img src="https://static.wixstatic.com/media/c22c23_e3b5cb121db549fdbb1590f51d378b8c~mv2.png/v1/fill/w_530,h_708,fp_0.50_0.50,q_95/c22c23_e3b5cb121db549fdbb1590f51d378b8c~mv2.webp" alt="" />
       </Link>
 
@@ -16,7 +16,7 @@ export default function PostItem() {
         </div>
 
         <div>
-          <Link to="/" className="post-item-content__title">
+          <Link to="/post/2535/test" className="post-item-content__title">
             <h6>Do Not Leave Tokyo Before Eating This Ramen</h6>
           </Link>
 
