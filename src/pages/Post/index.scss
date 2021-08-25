@@ -5,6 +5,11 @@
     padding: 3rem 5rem;
     border: 1px solid $gray-700;
 
+    @include media-breakpoint-down('lg') {
+      padding: 0;
+      border: none;
+    }
+
     &-header {
       margin-bottom: 1.5rem;
 
@@ -19,6 +24,10 @@
     &__title {
       font-family: 'Playfair';
       font-size: 2.5rem;
+
+      @include media-breakpoint-down('lg') {
+        font-size: 1.8rem;
+      }
     }
 
     &__content {
@@ -51,6 +60,10 @@
 
   &-related {
     margin-top: 2rem;
+
+    @include media-breakpoint-down('lg') {
+      display: none;
+    }
 
     &-header {
       display: flex;
