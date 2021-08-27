@@ -1,8 +1,16 @@
 import './index.scss'
+import { useEffect, useState } from 'react'
+import NavMenu from '../NavMenu'
 import { Link } from 'react-router-dom'
 import { navigation, socialLinks } from '../../../config'
 
 export default function Header() {
+  const [isShowNavMenu, setIsShowNavMenu] = useState(false)
+
+  useEffect(() => {
+    document.getElementsByTagName('html')[0].style.overflowY = isShowNavMenu ? 'hidden' : 'auto'
+  }, [isShowNavMenu])
+
   return (
     <header className="header">
 
@@ -14,7 +22,11 @@ export default function Header() {
           </div>
 
           <div className="header-mobile-top-nav">
-            <button className="header-mobile-top-nav__btn"><i className="ti-menu"></i></button>
+            <button className="header-mobile-top-nav__btn" onClick={() => setIsShowNavMenu(!isShowNavMenu)}>
+              {isShowNavMenu ? <i className="ti-close"></i> : <i className="ti-menu"></i>}
+            </button>
+
+            <NavMenu isShow={isShowNavMenu} />
           </div>
         </div>
       </div>
@@ -30,11 +42,11 @@ export default function Header() {
         <div className="container">
           <div className="row header-nav-items">
             
-            { navigation.map((nav, index) => (
-              <div className="col-2 header-nav-items-block" key={ 'nav-header-' + index }>
-                <Link to={ nav.path } className="header-nav-items-block__link">{ nav.title }</Link>
+            {navigation.map((nav, index) => (
+              <div className="col-2 header-nav-items-block" key={'nav-header-' + index}>
+                <Link to={nav.path} className="header-nav-items-block__link">{nav.title}</Link>
               </div>
-            )) }
+            ))}
 
             <div className="col-2 header-nav-items-block search">
               <input type="text" placeholder="Search..." className="header-nav-items-block__search-input" />
@@ -42,16 +54,16 @@ export default function Header() {
             </div>
 
             <div className="col-2 header-nav-items-block">
-              { socialLinks.map((social, index) => (
+              {socialLinks.map((social, index) => (
                 <a
                   rel="nofollow"
-                  href={ social.link }
-                  key={ 'social-header-' + index }
+                  href={social.link}
+                  key={'social-header-' + index}
                   className="header-nav-items-block__link social-icon"
                 >
-                  <i className={ social.icon }></i>
+                  <i className={social.icon}></i>
                 </a>
-              )) }
+              ))}
             </div>
           </div>
         </div>

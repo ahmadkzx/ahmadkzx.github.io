@@ -1,0 +1,52 @@
+@import "../../../assets/sass/boot";
+
+.nav-menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: white;
+  z-index: 10;
+  transform: translateX(100vw);
+  opacity: 0;
+  transition: all .5s ease-out;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &-items {
+    margin-bottom: 1rem;
+
+    &__link {
+      display: block;
+      color: $gray-800;
+      text-decoration: none;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  &-socials {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__link {
+      display: block;
+      color: $gray-900;
+      text-decoration: none;
+      text-align: center;
+      margin: 0 .5rem;
+      font-size: 1.4rem;
+    }
+  }
+}
