@@ -1,0 +1,41 @@
+@import "../../assets/sass/boot";
+
+.about {
+  border: 1px solid $gray-700;
+
+  &__photo {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-content {
+    padding: 2rem 3rem;
+
+    &__title {
+      font-family: 'Playfair';
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    &__description {
+      font-weight: 300;
+      line-height: 1.5rem;
+    }
+
+    &__dl-cv {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .7rem 3rem;
+      color: white;
+      text-decoration: none;
+      background: $gray-900;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
