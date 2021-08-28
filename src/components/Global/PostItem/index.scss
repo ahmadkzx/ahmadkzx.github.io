@@ -2,29 +2,21 @@
 
 .post-item {
   width: 100%;
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   border: 1px solid $gray-700;
   margin-bottom: 1.5rem;
 
   @include media-breakpoint-down('md') {
-    flex-direction: column;
-    height: auto;
+    border: none;
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid $gray-400;
   }
 
   &__photo {
     display: block;
-    width: 50%;
+    width: 100%;
     min-width: 50%;
-    height: 100%;
-    overflow: hidden;
-
-    @include media-breakpoint-down('md') {
-      width: 100%;
-      max-height: 18rem;
-    }
+    min-height: 16.25rem;
 
     img {
       width: 100%;
@@ -85,6 +77,10 @@
       margin-top: 2rem;
       padding-top: 1rem;
       border-top: 1px solid $gray-400;
+
+      @include media-breakpoint-down('md') {
+        display: none;
+      }
 
       &__views, &__likes {
         font-size: .9rem;

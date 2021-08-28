@@ -10,9 +10,12 @@ export default function HomePage() {
 
         <span className="home__section-title">LATEST POSTS</span>
 
-        <PostItem />
-        <PostItem />
-        <PostItem />
+        <div className="row">
+          <div className="col-12 col-md-6"><PostItem /></div>
+          <div className="col-12 col-md-6"><PostItem /></div>
+          <div className="col-12 col-md-6"><PostItem /></div>
+          <div className="col-12 col-md-6"><PostItem /></div>
+        </div>
       </div>
     </div>
   )

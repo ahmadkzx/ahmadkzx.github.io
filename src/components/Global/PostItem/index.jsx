@@ -1,12 +1,12 @@
 import './index.scss'
 import { Link } from 'react-router-dom'
 
-export default function PostItem() {
+export default function PostItem(props) {
   return (
     <div className="post-item">
       
       <Link to="/post/2535/test" className="post-item__photo">
-        <img src="https://static.wixstatic.com/media/c22c23_e3b5cb121db549fdbb1590f51d378b8c~mv2.png/v1/fill/w_530,h_708,fp_0.50_0.50,q_95/c22c23_e3b5cb121db549fdbb1590f51d378b8c~mv2.webp" alt="" />
+        <img src="https://static.wixstatic.com/media/c22c23_5ab44dfe10f84b5e90e19db16bd06ae3~mv2.png/v1/fill/w_908,h_510,fp_0.50_0.50,q_95/c22c23_5ab44dfe10f84b5e90e19db16bd06ae3~mv2.webp" alt="" />
       </Link>
 
       <div className="post-item-content">
@@ -25,14 +25,16 @@ export default function PostItem() {
           </p>
         </div>
 
-        <div className="post-item-content-footer">
-          <span className="post-item-content-footer__views">0 views</span>
+        {(!props.isWithoutFooter) ? (
+          <div className="post-item-content-footer">
+            <span className="post-item-content-footer__views">0 views</span>
 
-          <div>
-            <span className="post-item-content-footer__likes">5</span>
-            <button className="post-item-content-footer__like-btn"><i className="ti-heart"></i></button>
+            <div>
+              <span className="post-item-content-footer__likes">5</span>
+              <button className="post-item-content-footer__like-btn"><i className="ti-heart"></i></button>
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
 
     </div>

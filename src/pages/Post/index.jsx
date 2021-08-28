@@ -1,5 +1,6 @@
 import './index.scss'
 import { Link } from 'react-router-dom'
+import PostItem from '../../components/Global/PostItem'
 
 export default function PostPage() {
   return (
@@ -34,13 +35,11 @@ export default function PostPage() {
           </div>
 
           <div className="row">
-            <div className="col-4">
-              <div className="post-page-related-post">
-                <Link to="/post/54/test" className="post-page-related-post__photo">
-                  <img src="https://static.wixstatic.com/media/c22c23_b8eb71c2f20244a484c34e129f752983~mv2.png/v1/fit/w_450%2Ch_253%2Cal_c/file.png" alt="" />
-                </Link>
-                <Link to="/post/54/test" className="post-page-related-post__title"><h6>Movies That Need to Be Seen on the Big Screen</h6></Link>
-              </div>
+            <div className="col-12 col-md-6">
+              <PostItem isWithoutFooter={true} />
+            </div>
+            <div className="col-12 col-md-6">
+              <PostItem isWithoutFooter={true} />
             </div>
           </div>
         </div>
