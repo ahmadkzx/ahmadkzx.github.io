@@ -10,10 +10,6 @@ export const navigation = [
   {
     title: 'Posts',
     path: '/posts'
-  },
-  {
-    title: 'Contact',
-    path: '/contact'
   }
 ]
 
