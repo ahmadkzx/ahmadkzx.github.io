@@ -28,11 +28,6 @@ export default function PostItem(props) {
         {(!props.isWithoutFooter) ? (
           <div className="post-item-content-footer">
             <span className="post-item-content-footer__views">0 views</span>
-
-            <div>
-              <span className="post-item-content-footer__likes">5</span>
-              <button className="post-item-content-footer__like-btn"><i className="ti-heart"></i></button>
-            </div>
           </div>
         ) : null}
       </div>
