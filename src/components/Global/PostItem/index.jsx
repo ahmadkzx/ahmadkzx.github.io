@@ -1,33 +1,37 @@
-import './index.scss'
-import { Link } from 'react-router-dom'
+import styles from './index.module.scss'
+import Link from 'next/link'
 
 export default function PostItem(props) {
   return (
-    <div className="post-item">
+    <div className={styles['post-item']}>
       
-      <Link to="/post/2535/test" className="post-item__photo">
-        <img src="https://static.wixstatic.com/media/c22c23_5ab44dfe10f84b5e90e19db16bd06ae3~mv2.png/v1/fill/w_908,h_510,fp_0.50_0.50,q_95/c22c23_5ab44dfe10f84b5e90e19db16bd06ae3~mv2.webp" alt="" />
+      <Link href="/post/2535/test">
+        <a className={styles['post-item__photo']}>
+          <img src="https://static.wixstatic.com/media/c22c23_5ab44dfe10f84b5e90e19db16bd06ae3~mv2.png/v1/fill/w_908,h_510,fp_0.50_0.50,q_95/c22c23_5ab44dfe10f84b5e90e19db16bd06ae3~mv2.webp" alt="" />
+        </a>
       </Link>
 
-      <div className="post-item-content">
-        <div className="post-item-content-header">
-          <span className="post-item-content-header__publish-date"><i className="ti-calendar"></i> Aug 10</span>
-          <span className="post-item-content-header__read-duration"><i className="ti-time"></i> 10 min</span>
+      <div className={styles['post-item-content']}>
+        <div className={styles['post-item-content-header']}>
+          <span className={styles['post-item-content-header__publish-date']}><i className={styles['ti-calendar']}></i> Aug 10</span>
+          <span className={styles['post-item-content-header__read-duration']}><i className={styles['ti-time']}></i> 10 min</span>
         </div>
 
         <div>
-          <Link to="/post/2535/test" className="post-item-content__title">
-            <h6>Do Not Leave Tokyo Before Eating This Ramen</h6>
+          <Link href="/post/2535/test">
+            <a className={styles['post-item-content__title']}>
+              <h6>Do Not Leave Tokyo Before Eating This Ramen</h6>
+            </a>
           </Link>
 
-          <p className="post-item-content__summary">
+          <p className={styles['post-item-content__summary']}>
             Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to contin
           </p>
         </div>
 
         {(!props.isWithoutFooter) ? (
-          <div className="post-item-content-footer">
-            <span className="post-item-content-footer__views">0 views</span>
+          <div className={styles['post-item-content-footer']}>
+            <span className={styles['post-item-content-footer__views']}>0 views</span>
           </div>
         ) : null}
       </div>

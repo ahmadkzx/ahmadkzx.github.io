@@ -1,7 +1,7 @@
-import './index.scss'
+import styles from './index.module.scss'
 import { useEffect, useState } from 'react'
 import NavMenu from '../NavMenu'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { navigation, socialLinks } from '../../../config'
 
 export default function Header() {
@@ -12,17 +12,17 @@ export default function Header() {
   }, [isShowNavMenu])
 
   return (
-    <header className="header">
+    <header className={styles['header']}>
 
-      <div className="header-mobile-top">
+      <div className={styles['header-mobile-top']}>
         <div className="container">
-          <div className="header-mobile-top-search">
-            <input type="text" className="header-mobile-top-search__input" placeholder="Search..." />
-            <i className="ti-search header-mobile-top-search__icon"></i>
+          <div className={styles['header-mobile-top-search']}>
+            <input type="text" className={styles['header-mobile-top-search__input']} placeholder="Search..." />
+            <i className={`ti-search ${styles['header-mobile-top-search__icon']}`}></i>
           </div>
 
-          <div className="header-mobile-top-nav">
-            <button className="header-mobile-top-nav__btn" onClick={() => setIsShowNavMenu(!isShowNavMenu)}>
+          <div className={styles['header-mobile-top-nav']}>
+            <button className={styles['header-mobile-top-nav__btn']} onClick={() => setIsShowNavMenu(!isShowNavMenu)}>
               {isShowNavMenu ? <i className="ti-close"></i> : <i className="ti-menu"></i>}
             </button>
 
@@ -32,34 +32,36 @@ export default function Header() {
       </div>
 
       <div className="container">
-        <div className="header-heading">
-          <h4 className="header-heading__subtitle">EVERY THING HERE IS ABOUT PROGRAMMING.</h4>
-          <h2 className="header-heading__title">Ahmad Karimzade</h2>
+        <div className={styles['header-heading']}>
+          <h4 className={styles['header-heading__subtitle']}>EVERY THING HERE IS ABOUT PROGRAMMING.</h4>
+          <h2 className={styles['header-heading__title']}>Ahmad Karimzade</h2>
         </div>
       </div>
 
-      <div className="header-nav">
+      <div className={styles['header-nav']}>
         <div className="container">
-          <div className="row header-nav-items">
+          <div className={`row ${styles['header-nav-items']}`}>
             
             {navigation.map((nav, index) => (
-              <div className="col-3 header-nav-items-block" key={'nav-header-' + index}>
-                <Link to={nav.path} className="header-nav-items-block__link">{nav.title}</Link>
+              <div key={'nav-header-' + index} className={`col-3 ${styles['header-nav-items-block']}`}>
+                <Link href={nav.path}>
+                  <a className={styles['header-nav-items-block__link']}>{nav.title}</a>
+                </Link>
               </div>
             ))}
 
-            {/* <div className="col-3 header-nav-items-block search">
-              <input type="text" placeholder="Search..." className="header-nav-items-block__search-input" />
+            {/* <div className={`col-3 search ${styles['header-nav-items-block']}`}>
+              <input type="text" placeholder="Search..." className={styles['header-nav-items-block__search-input']} />
               <i className="ti-search"></i>
             </div> */}
 
-            <div className="col-3 header-nav-items-block">
+            <div className={`col-3 ${styles['header-nav-items-block']}`}>
               {socialLinks.map((social, index) => (
                 <a
                   rel="nofollow"
                   href={social.link}
                   key={'social-header-' + index}
-                  className="header-nav-items-block__link social-icon"
+                  className={`${styles['social-icon']} ${styles['header-nav-items-block__link']}`}
                 >
                   <i className={social.icon}></i>
                 </a>

@@ -1,26 +1,23 @@
-import './index.scss'
-import { Link } from 'react-router-dom'
+import styles from './index.module.scss'
+import Link from 'next/link'
 import { navigation, socialLinks } from '../../../config'
 
 export default function NavMenu(props) {
   return (
-    <div className={`nav-menu ${props.isShow ? 'show' : 'hide'}`}>
-      <nav className="nav-menu-items">
+    <div className={`${styles['nav-menu']} ${props.isShow ? 'show' : 'hide'}`}>
+      <nav className={styles['nav-menu-items']}>
         { navigation.map(nav => (
-          <Link to={ nav.path } className="nav-menu-items__link">{ nav.title }</Link>
+          <Link href={ nav.path } className={styles['nav-menu-items__link']}><a>{ nav.title }</a></Link>
         )) }
       </nav>
 
-      <div className="nav-menu-socials">
+      <div className={styles['nav-menu-socials']}>
         { socialLinks.map((social, index) => (
-          <a
-            rel="nofollow"
-            href={ social.link }
-            key={ 'social-header-' + index }
-            className="nav-menu-socials__link"
-          >
-            <i className={ social.icon }></i>
-          </a>
+          <Link href={social.link} className={styles['nav-menu-socials__link']} key={'social-header-nav-' + index}>
+            <a rel="nofollow">
+              <i className={ social.icon }></i>
+            </a>
+          </Link>
         )) }
       </div>
     </div>

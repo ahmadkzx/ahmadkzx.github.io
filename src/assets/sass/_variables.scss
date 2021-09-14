@@ -17,17 +17,14 @@ $grid-breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
-  lg: 980px,
-  xl: 980px,
-  xx: 980px,
+  lg: 980px
 );
 
 $container-max-widths: (
+  xs: 0,
   sm: 540px,
   md: 720px,
   lg: 980px,
-  xl: 980px,
-  xx: 980px,
 );
 
 $font-family-sans-serif: 'OpenSans', sans-serif;
