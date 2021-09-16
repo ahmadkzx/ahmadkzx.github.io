@@ -1,25 +1,26 @@
-import styles from './index.module.scss'
+import dayjs from 'dayjs'
 import Link from 'next/link'
+import styles from './index.module.scss'
 import PostItem from '@/components/Global/PostItem'
 
-export default function PostPage() {
+export default function PostPage({ post, recentPosts }) {
+  const postDate = dayjs(post.createdAt).format('MMM D')
+
   return (
     <div className={styles['post-page']}>
       <div className="container">
 
         <div className={styles['post-page-body']}>
           <div className={styles['post-page-body-header']}>
-            <span className={styles['post-page-body-header__publish-date']}><i className="ti-calendar"></i> Aug 10</span>
-            <span className={styles['post-page-body-header__read-duration']}><i className="ti-time"></i> 10 min</span>
+            <span className={styles['post-page-body-header__publish-date']}><i className="ti-calendar"></i> {postDate}</span>
+            <span className={styles['post-page-body-header__read-duration']}><i className="ti-time"></i> {post.readDuration} min</span>
           </div>
 
-          <h2 className={styles['post-page-body__title']}>Back to Fiction: What I'm Reading This Summer</h2>
+          <h2 className={styles['post-page-body__title']}>{post.title}</h2>
 
-          <img src="https://static.wixstatic.com/media/c22c23_5ab44dfe10f84b5e90e19db16bd06ae3~mv2.png/v1/fill/w_908,h_510,fp_0.50_0.50,q_95/c22c23_5ab44dfe10f84b5e90e19db16bd06ae3~mv2.webp" className={styles['post-page-body__photo']} />
+          <img src={post.photo} className={styles['post-page-body__photo']} />
 
-          <div className={styles['post-page-body__content']}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
+          <div className={styles['post-page-body__content']}>{post.content}</div>
 
           <div className={styles['post-page-body-footer']}>
             <div className={styles['post-page-body-footer-share']}>
@@ -37,16 +38,42 @@ export default function PostPage() {
           </div>
 
           <div className="row">
-            <div className="col-12 col-md-6">
-              <PostItem isWithoutFooter={true} />
-            </div>
-            <div className="col-12 col-md-6">
-              <PostItem isWithoutFooter={true} />
-            </div>
+            {
+              recentPosts.map(recentPost => (
+                <div className="col-12 col-md-6" key={'post-' + recentPost.id}>
+                  <PostItem post={recentPost} isWithoutFooter={true} />
+                </div>
+              ))
+            }
           </div>
         </div>
 
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps({ params }) {
+  try {
+    // GET POST
+    // example: 'test-post-21' 21 is id of post
+    const postId = params.slug.split('-').reverse()[0]
+    const postEndPoint = process.env.API_URL + '/posts/' + postId
+    const postRes = await fetch(postEndPoint)
+    const { data: post } = await postRes.json()
+
+    const recentPostsEndPoint = process.env.API_URL + '/posts?limit=2'
+    const recentPostsRes = await fetch(recentPostsEndPoint)
+    const { data: recentPosts } = await recentPostsRes.json()
+
+    return {
+      props: {
+        post,
+        recentPosts
+      }
+    }
+
+  } catch(err) {
+    console.error('[POST PAGE]:', err)
+  }
 }

@@ -1,3 +1,7 @@
 module.exports = {
-  reactStrictMode: true
+  reactStrictMode: true,
+
+  env: {
+    API_URL: 'http://localhost:7070/api'
+  }
 }
