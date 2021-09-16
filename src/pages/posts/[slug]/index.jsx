@@ -1,10 +1,19 @@
 import dayjs from 'dayjs'
 import Link from 'next/link'
+import ClipboardJS from 'clipboard'
 import styles from './index.module.scss'
 import PostItem from '@/components/Global/PostItem'
 
 export default function PostPage({ post, recentPosts }) {
+  
+  const postLink = `${process.env.BASE_URL}/posts/${post.slug}-${post.id}`
   const postDate = dayjs(post.created_at).format('MMM D')
+  const shareLinks = {
+    facebook: `http://www.facebook.com/sharer/sharer.php?u=${postLink}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${postLink}`
+  }
+
+  if (process.browser) new ClipboardJS('#copy-btn')
 
   return (
     <div className={styles['post-page']}>
@@ -24,9 +33,15 @@ export default function PostPage({ post, recentPosts }) {
 
           <div className={styles['post-page-body-footer']}>
             <div className={styles['post-page-body-footer-share']}>
-              <button className={styles['post-page-body-footer-share__btn']}><i className="ti-linkedin"></i></button>
-              <button className={styles['post-page-body-footer-share__btn']}><i className="ti-facebook"></i></button>
-              <button className={styles['post-page-body-footer-share__btn']}><i className="ti-link"></i></button>
+              <a href={shareLinks.linkedin} target="_blank" className={styles['post-page-body-footer-share__btn']}>
+                <i className="ti-linkedin"></i>
+              </a>
+              <a href={shareLinks.facebook} target="_blank" className={styles['post-page-body-footer-share__btn']}>
+                <i className="ti-facebook"></i>
+              </a>
+              <button id="copy-btn" className={styles['post-page-body-footer-share__btn']} data-clipboard-text={postLink}>
+                <i className="ti-link"></i>
+              </button>
             </div>
 
             <span className={styles['post-page-body-footer__views']}><i className="ti-eye"></i> {post.views}</span>
