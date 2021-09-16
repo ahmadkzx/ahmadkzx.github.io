@@ -1,17 +1,15 @@
 import styles from './index.module.scss'
 
 export default function AboutPage() {
+  const cvUrl = `${process.env.BASE_URL}/AhmadKarimzade-CV.pdf`
+
   return (
     <div className="container">
       <div className={styles['about']}>
-        <div className={styles['about__photo']}>
-          <img src="https://static.wixstatic.com/media/c22c23_048c6cce42284d548acb09af906d07cd~mv2_d_1959_1212_s_2.png/v1/crop/x_0,y_144,w_1959,h_1024/fill/w_1872,h_978,al_c,q_90,usm_0.66_1.00_0.01/portrait%20eliza.webp" alt="Ahmad Karimzade" />
-        </div>
-
         <div className={styles['about-content']}>
           <h2 className={styles['about-content__title']}>Hello World</h2>
-          <p className={styles['about-content__description']}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames. Lobortis feugiat vivamus at augue eget. Vestibulum lorem sed risus ultricies tristique nulla aliquet enim. Libero nunc consequat interdum varius. Amet facilisis magna etiam tempor. Scelerisque varius morbi enim nunc faucibus. Elementum curabitur vitae nunc sed velit dignissim sodales. Lobortis feugiat vivamus at augue. Egestas maecenas pharetra convallis posuere. Sit amet commodo nulla facilisi nullam vehicula ipsum. Viverra maecenas accumsan lacus vel facilisis. Ullamcorper morbi tincidunt ornare massa eget. Vitae sapien pellentesque habitant morbi tristique senectus et. A pellentesque sit amet porttitor eget. Commodo odio aenean sed adipiscing diam donec. Amet facilisis magna etiam tempor orci eu. Et odio pellentesque diam volutpat commodo sed.</p>
-          <a href="/" className={styles['about-content__dl-cv']}>My CV</a>
+          <p className={styles['about-content__description']}>I was born in 2003 and live in Iran. I bought my first computer when I was 8 years old. Working with it was a lot of fun for me, and I did a lot of things with it, like photo editing and media making. At the 14, I became acquainted with programming and realized that I was very interested in it. I started learning Android Programming with Google without going to a particular class or boot camp. At 15 I published my first Android apps in Iranian markets. They were successful. After about a year and a half, I got into Front-End programming and have been doing Front-End programming ever since. I learned programming without a class and just because of the interest and talent I had in it and I love my job.</p>
+          <a href={cvUrl} className={styles['about-content__dl-cv']}>My CV</a>
         </div>
       </div>
     </div>
