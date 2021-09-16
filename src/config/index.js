@@ -4,12 +4,12 @@ export const navigation = [
     path: '/'
   },
   {
-    title: 'About',
-    path: '/about'
-  },
-  {
     title: 'Posts',
     path: '/posts'
+  },
+  {
+    title: 'About',
+    path: '/about'
   }
 ]
 
