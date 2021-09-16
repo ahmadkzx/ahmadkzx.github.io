@@ -6,19 +6,21 @@ export default function NavMenu(props) {
   return (
     <div className={`${styles['nav-menu']} ${props.isShow ? 'show' : 'hide'}`}>
       <nav className={styles['nav-menu-items']}>
-        { navigation.map(nav => (
-          <Link href={ nav.path } className={styles['nav-menu-items__link']}><a>{ nav.title }</a></Link>
-        )) }
+        {navigation.map((nav, index) => (
+          <Link href={nav.path} className={styles['nav-menu-items__link']} key={'nav-menu-item' + index}>
+            <a>{nav.title}</a>
+          </Link>
+        ))}
       </nav>
 
       <div className={styles['nav-menu-socials']}>
-        { socialLinks.map((social, index) => (
-          <Link href={social.link} className={styles['nav-menu-socials__link']} key={'social-header-nav-' + index}>
-            <a rel="nofollow">
-              <i className={ social.icon }></i>
+        {socialLinks.map((social, index) => (
+          <Link href={social.link} key={'nav-menu-social-item' + index}>
+            <a rel="nofollow" className={styles['nav-menu-socials__link']}>
+              <i className={social.icon}></i>
             </a>
           </Link>
-        )) }
+        ))}
       </div>
     </div>
   )
