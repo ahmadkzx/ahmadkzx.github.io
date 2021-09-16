@@ -62,6 +62,9 @@ export async function getServerSideProps({ params }) {
     const postId = params.slug.split('-').reverse()[0]
     const postEndPoint = process.env.API_URL + '/posts/' + postId
     const postRes = await fetch(postEndPoint)
+
+    if (postRes.status == 404 || postRes.status == 403) return { notFound: true }
+
     const { data: post } = await postRes.json()
 
     const recentPostsEndPoint = process.env.API_URL + '/posts?limit=2'
