@@ -4,7 +4,7 @@ import styles from './index.module.scss'
 
 export default function PostItem({ post, isWithoutFooter }) {
   const postLink = `/posts/${post.slug}-${post.id}`
-  const postDate = dayjs(post.createdAt).format('MMM D')
+  const postDate = dayjs(post.created_at).format('MMM D')
 
   return (
     <div className={styles['post-item']}>
@@ -18,7 +18,7 @@ export default function PostItem({ post, isWithoutFooter }) {
       <div className={styles['post-item-content']}>
         <div className={styles['post-item-content-header']}>
           <span className={styles['post-item-content-header__publish-date']}><i className={styles['ti-calendar']}></i> {postDate}</span>
-          <span className={styles['post-item-content-header__read-duration']}><i className={styles['ti-time']}></i> {post.readDuration} min</span>
+          <span className={styles['post-item-content-header__read-duration']}><i className={styles['ti-time']}></i> {post.read_duration} min</span>
         </div>
 
         <div>

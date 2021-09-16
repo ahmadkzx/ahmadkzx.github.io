@@ -27,7 +27,9 @@
   &-content {
     padding: 2rem;
 
-    &-detail__publish-date, &-detail__read-duration {
+    &-detail__views,
+    &-detail__publish-date,
+    &-detail__read-duration {
       font-size: .8rem;
       color: $gray-700;
       margin-right: 1rem;

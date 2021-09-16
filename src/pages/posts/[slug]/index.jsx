@@ -4,7 +4,7 @@ import styles from './index.module.scss'
 import PostItem from '@/components/Global/PostItem'
 
 export default function PostPage({ post, recentPosts }) {
-  const postDate = dayjs(post.createdAt).format('MMM D')
+  const postDate = dayjs(post.created_at).format('MMM D')
 
   return (
     <div className={styles['post-page']}>
@@ -13,7 +13,7 @@ export default function PostPage({ post, recentPosts }) {
         <div className={styles['post-page-body']}>
           <div className={styles['post-page-body-header']}>
             <span className={styles['post-page-body-header__publish-date']}><i className="ti-calendar"></i> {postDate}</span>
-            <span className={styles['post-page-body-header__read-duration']}><i className="ti-time"></i> {post.readDuration} min</span>
+            <span className={styles['post-page-body-header__read-duration']}><i className="ti-time"></i> {post.read_duration} min</span>
           </div>
 
           <h2 className={styles['post-page-body__title']}>{post.title}</h2>
@@ -28,6 +28,8 @@ export default function PostPage({ post, recentPosts }) {
               <button className={styles['post-page-body-footer-share__btn']}><i className="ti-facebook"></i></button>
               <button className={styles['post-page-body-footer-share__btn']}><i className="ti-link"></i></button>
             </div>
+
+            <span className={styles['post-page-body-footer__views']}><i className="ti-eye"></i> {post.views}</span>
           </div>
         </div>
 
