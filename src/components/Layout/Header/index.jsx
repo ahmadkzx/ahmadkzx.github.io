@@ -34,7 +34,7 @@ export default function Header() {
       <div className="container">
         <div className={styles['header-heading']}>
           <h4 className={styles['header-heading__subtitle']}>EVERY THING HERE IS ABOUT PROGRAMMING.</h4>
-          <h2 className={styles['header-heading__title']}>Ahmad Karimzade</h2>
+          <Link href="/"><a className={styles['header-heading__title']}><h2>Ahmad Karimzade</h2></a></Link>
         </div>
       </div>
 

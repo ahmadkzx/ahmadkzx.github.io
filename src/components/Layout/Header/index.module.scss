@@ -78,6 +78,15 @@
     }
 
     &__title {
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        color: black;
+      }
+    }
+
+    &__title h2 {
       font-size: 6.5rem;
       text-align: center;
       font-weight: bold;

@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import Head from 'next/head'
 import Link from 'next/link'
 import ClipboardJS from 'clipboard'
 import styles from './index.module.scss'
@@ -16,57 +17,64 @@ export default function PostPage({ post, recentPosts }) {
   if (process.browser) new ClipboardJS('#copy-btn')
 
   return (
-    <div className={styles['post-page']}>
-      <div className="container">
+    <>
+      <Head>
+        <title>Ahmad Karimzade - {post.title}</title>
+        <meta name="description" content={post.summary}></meta>
+      </Head>
 
-        <div className={styles['post-page-body']}>
-          <div className={styles['post-page-body-header']}>
-            <span className={styles['post-page-body-header__publish-date']}><i className="ti-calendar"></i> {postDate}</span>
-            <span className={styles['post-page-body-header__read-duration']}><i className="ti-time"></i> {post.read_duration} min</span>
-          </div>
+      <div className={styles['post-page']}>
+        <div className="container">
 
-          <h2 className={styles['post-page-body__title']}>{post.title}</h2>
-
-          <img src={post.photo} className={styles['post-page-body__photo']} />
-
-          <div className={styles['post-page-body__content']}>{post.content}</div>
-
-          <div className={styles['post-page-body-footer']}>
-            <div className={styles['post-page-body-footer-share']}>
-              <a href={shareLinks.linkedin} target="_blank" className={styles['post-page-body-footer-share__btn']}>
-                <i className="ti-linkedin"></i>
-              </a>
-              <a href={shareLinks.facebook} target="_blank" className={styles['post-page-body-footer-share__btn']}>
-                <i className="ti-facebook"></i>
-              </a>
-              <button id="copy-btn" className={styles['post-page-body-footer-share__btn']} data-clipboard-text={postLink}>
-                <i className="ti-link"></i>
-              </button>
+          <div className={styles['post-page-body']}>
+            <div className={styles['post-page-body-header']}>
+              <span className={styles['post-page-body-header__publish-date']}><i className="ti-calendar"></i> {postDate}</span>
+              <span className={styles['post-page-body-header__read-duration']}><i className="ti-time"></i> {post.read_duration} min</span>
             </div>
 
-            <span className={styles['post-page-body-footer__views']}><i className="ti-eye"></i> {post.views}</span>
+            <h2 className={styles['post-page-body__title']}>{post.title}</h2>
+
+            <img src={post.photo} className={styles['post-page-body__photo']} />
+
+            <div className={styles['post-page-body__content']}>{post.content}</div>
+
+            <div className={styles['post-page-body-footer']}>
+              <div className={styles['post-page-body-footer-share']}>
+                <a href={shareLinks.linkedin} target="_blank" className={styles['post-page-body-footer-share__btn']}>
+                  <i className="ti-linkedin"></i>
+                </a>
+                <a href={shareLinks.facebook} target="_blank" className={styles['post-page-body-footer-share__btn']}>
+                  <i className="ti-facebook"></i>
+                </a>
+                <button id="copy-btn" className={styles['post-page-body-footer-share__btn']} data-clipboard-text={postLink}>
+                  <i className="ti-link"></i>
+                </button>
+              </div>
+
+              <span className={styles['post-page-body-footer__views']}><i className="ti-eye"></i> {post.views}</span>
+            </div>
           </div>
+
+          <div className={styles['post-page-related']}>
+            <div className={styles['post-page-related-header']}>
+              <span className={styles['post-page-related-header__title']}>RECENT POSTS</span>
+              <Link href="/posts"><a className={styles['post-page-related-header__seeall']}>See All</a></Link>
+            </div>
+
+            <div className="row">
+              {
+                recentPosts.map(recentPost => (
+                  <div className="col-12 col-md-6" key={'post-' + recentPost.id}>
+                    <PostItem post={recentPost} isWithoutFooter={true} />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
         </div>
-
-        <div className={styles['post-page-related']}>
-          <div className={styles['post-page-related-header']}>
-            <span className={styles['post-page-related-header__title']}>RECENT POSTS</span>
-            <Link href="/posts"><a className={styles['post-page-related-header__seeall']}>See All</a></Link>
-          </div>
-
-          <div className="row">
-            {
-              recentPosts.map(recentPost => (
-                <div className="col-12 col-md-6" key={'post-' + recentPost.id}>
-                  <PostItem post={recentPost} isWithoutFooter={true} />
-                </div>
-              ))
-            }
-          </div>
-        </div>
-
       </div>
-    </div>
+    </>
   )
 }
 

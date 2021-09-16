@@ -1,24 +1,32 @@
+import Head from 'next/head'
 import styles from './index.module.scss'
 import PostItem from '@/components/Global/PostItem'
 import SpecialPost from '@/components/Home/SpecialPost'
 
 export default function HomePage({ posts, specialPost }) {
   return (
-    <div className={styles['home']}>
-      <div className="container">
-        <SpecialPost post={specialPost} />
+    <>
+      <Head>
+        <title>Ahmad Karimzade</title>
+        <meta name="description" content="Ahmad Karimzade Personal Blog"></meta>
+      </Head>
+      
+      <div className={styles['home']}>
+        <div className="container">
+          <SpecialPost post={specialPost} />
 
-        <span className={styles['home__section-title']}>LATEST POSTS</span>
+          <span className={styles['home__section-title']}>LATEST POSTS</span>
 
-        <div className="row">
-          {
-            posts.map(post => (
-              <div className="col-12 col-md-6" key={'post-' + post.id}><PostItem post={post} /></div>
-            ))
-          }
+          <div className="row">
+            {
+              posts.map(post => (
+                <div className="col-12 col-md-6" key={'post-' + post.id}><PostItem post={post} /></div>
+              ))
+            }
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

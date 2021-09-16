@@ -1,7 +1,13 @@
+import Head from 'next/head'
 import PostItem from '../../components/Global/PostItem'
 
 export default function PostsPage({ posts }) {
   return (
+    <>
+      <Head>
+        <title>Ahmad Karimzade - Posts</title>
+      </Head>
+
     <div className="container">
       <div className="row">
         {
@@ -11,6 +17,7 @@ export default function PostsPage({ posts }) {
         }
       </div>
     </div>
+  </>
   )
 }
 
