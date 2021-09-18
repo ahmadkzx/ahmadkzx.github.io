@@ -20,7 +20,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:static": "next build && next export --outdir docs"
+    "build:static": "next build && next export --outdir docs && node ./src/build/fixAssetsPaths.js"
   },
   "eslintConfig": {
     "extends": [
