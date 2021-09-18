@@ -30,6 +30,8 @@ async function fixAssetsPaths() {
     fs.writeFileSync(filepath, fileContent, { encoding: 'utf-8' })
   })
 
+  fs.writeFileSync(path.join(dir, '.nojekyll'), '')
+
   console.log('✅ Paths Fixed')
 }
 
