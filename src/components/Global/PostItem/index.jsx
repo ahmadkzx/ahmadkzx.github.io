@@ -2,9 +2,9 @@ import dayjs from 'dayjs'
 import Link from 'next/link'
 import styles from './index.module.scss'
 
-export default function PostItem({ post, isWithoutFooter }) {
-  const postLink = `/posts/${post.slug}-${post.id}`
-  const postDate = dayjs(post.created_at).format('MMM D')
+export default function PostItem({ post }) {
+  const postLink = `/posts/${post.slug}`
+  const postDate = dayjs(post.published_at).format('MMM D')
 
   return (
     <div className={styles['post-item']}>
@@ -30,12 +30,6 @@ export default function PostItem({ post, isWithoutFooter }) {
 
           <p className={styles['post-item-content__summary']}>{post.summary}</p>
         </div>
-
-        {(!isWithoutFooter) ? (
-          <div className={styles['post-item-content-footer']}>
-            <span className={styles['post-item-content-footer__views']}>{post.views} views</span>
-          </div>
-        ) : null}
       </div>
 
     </div>

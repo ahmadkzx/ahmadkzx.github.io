@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import PostItem from '../../components/Global/PostItem'
+import getPosts from '@/assets/utils/getPosts'
+import PostItem from '@/components/Global/PostItem'
 
 export default function PostsPage({ posts }) {
   return (
@@ -21,11 +22,9 @@ export default function PostsPage({ posts }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
-    const endPoint = process.env.API_URL + '/posts'
-    const res = await fetch(endPoint)
-    const { data: posts } = await res.json()
+    const posts = await getPosts()
 
     return {
       props: {

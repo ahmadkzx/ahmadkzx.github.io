@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from './index.module.scss'
+import getPosts from '@/assets/utils/getPosts'
 import PostItem from '@/components/Global/PostItem'
 import SpecialPost from '@/components/Home/SpecialPost'
 
@@ -30,15 +31,11 @@ export default function HomePage({ posts, specialPost }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
-    const postsEndPoint = process.env.API_URL + '/posts'
-    const postsRes = await fetch(postsEndPoint)
-    const { data: posts } = await postsRes.json()
+    const posts = await getPosts()
 
-    const specialPostEndPoint = process.env.API_URL + '/special-post'
-    const specialPostRes = await fetch(specialPostEndPoint)
-    const { data: specialPost } = await specialPostRes.json()
+    const specialPost = posts.find(post => post.id == process.env.SPECIAL_POST_ID)
 
     return {
       props: {

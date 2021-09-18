@@ -1,13 +1,18 @@
+import path from 'path'
 import dayjs from 'dayjs'
 import Head from 'next/head'
 import Link from 'next/link'
+import { promises as fs } from 'fs'
 import ClipboardJS from 'clipboard'
 import styles from './index.module.scss'
+import getPosts from '@/assets/utils/getPosts'
 import PostItem from '@/components/Global/PostItem'
 
 export default function PostPage({ post, recentPosts }) {
   
-  const postLink = `${process.env.BASE_URL}/posts/${post.slug}-${post.id}`
+  if (!post) return <span>Loading...</span>
+
+  const postLink = `${process.env.BASE_URL}/posts/${post.slug}`
   const postDate = dayjs(post.created_at).format('MMM D')
   const shareLinks = {
     facebook: `http://www.facebook.com/sharer/sharer.php?u=${postLink}`,
@@ -50,8 +55,6 @@ export default function PostPage({ post, recentPosts }) {
                   <i className="ti-link"></i>
                 </button>
               </div>
-
-              <span className={styles['post-page-body-footer__views']}><i className="ti-eye"></i> {post.views}</span>
             </div>
           </div>
 
@@ -65,7 +68,7 @@ export default function PostPage({ post, recentPosts }) {
               {
                 recentPosts.map(recentPost => (
                   <div className="col-12 col-md-6" key={'post-' + recentPost.id}>
-                    <PostItem post={recentPost} isWithoutFooter={true} />
+                    <PostItem post={recentPost} />
                   </div>
                 ))
               }
@@ -78,21 +81,41 @@ export default function PostPage({ post, recentPosts }) {
   )
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
   try {
-    // GET POST
-    // example: 'test-post-21' 21 is id of post
-    const postId = params.slug.split('-').reverse()[0]
-    const postEndPoint = process.env.API_URL + '/posts/' + postId
-    const postRes = await fetch(postEndPoint)
+    const posts = await getPosts()
 
-    if (postRes.status == 404 || postRes.status == 403) return { notFound: true }
+    const paths = posts.map(post => ({
+      params: {
+        slug: post.slug
+      }
+    }))
 
-    const { data: post } = await postRes.json()
+    return {
+      paths,
+      fallback: false
+    }
 
-    const recentPostsEndPoint = process.env.API_URL + '/posts?limit=2'
-    const recentPostsRes = await fetch(recentPostsEndPoint)
-    const { data: recentPosts } = await recentPostsRes.json()
+  } catch(err) {
+    console.error('[GET POSTS STATIC PATHS]:', err)
+  }
+}
+
+export async function getStaticProps({ params }) {
+  try {
+
+    // GET THIS POST
+    const postSlug = params.slug
+
+    const postsDir = path.join(process.cwd(), '/db/posts')
+    const postFilePath = path.join(postsDir, `${postSlug}.json`)
+
+    let post = await fs.readFile(postFilePath, 'utf-8')
+    post = JSON.parse(post)
+
+    // GET OTHER POSTS
+    const posts = await getPosts()
+    const recentPosts = [posts[posts.length - 1], posts[posts.length - 2]].filter(Boolean) // get last and last - 1 post
 
     return {
       props: {

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styles from './index.module.scss'
 
 export default function SpecialPost({ post }) {
-  const postLink = `/posts/${post.slug}-${post.id}`
+  const postLink = `/posts/${post.slug}`
   const postDate = dayjs(post.created_at).format('MMM D')
 
   return (
@@ -20,7 +20,6 @@ export default function SpecialPost({ post }) {
         <div className={styles['featured-post-content-detail']}>
           <span className={styles['featured-post-content-detail__publish-date']}><i className="ti-calendar"></i> {postDate}</span>
           <span className={styles['featured-post-content-detail__read-duration']}><i className="ti-time"></i> {post.read_duration} min</span>
-          <span className={styles['featured-post-content-detail__views']}><i className="ti-eye"></i> {post.views}</span>
         </div>
 
         <Link href={postLink}>

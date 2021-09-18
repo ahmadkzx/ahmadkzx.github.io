@@ -1,8 +1,3 @@
 module.exports = {
-  reactStrictMode: true,
-
-  env: {
-    API_URL: 'http://localhost:7070/api',
-    BASE_URL: 'https://ahmadkarimzade.ir'
-  }
+  reactStrictMode: true
 }
