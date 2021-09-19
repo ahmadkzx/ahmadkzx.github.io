@@ -4,11 +4,11 @@ import { navigation, socialLinks } from '../../../config'
 
 export default function NavMenu(props) {
   return (
-    <div className={`${styles['nav-menu']} ${props.isShow ? 'show' : 'hide'}`}>
+    <div className={`${styles['nav-menu']} ${props.isShow ? styles['show'] : styles['hide']}`}>
       <nav className={styles['nav-menu-items']}>
         {navigation.map((nav, index) => (
-          <Link href={nav.path} className={styles['nav-menu-items__link']} key={'nav-menu-item' + index}>
-            <a>{nav.title}</a>
+          <Link href={nav.path} key={'nav-menu-item' + index}>
+            <a className={styles['nav-menu-items__link']}>{nav.title}</a>
           </Link>
         ))}
       </nav>
