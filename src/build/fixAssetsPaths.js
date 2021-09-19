@@ -17,18 +17,18 @@ async function getFiles(dir) {
 async function fixAssetsPaths() {
   const dir = path.join(process.cwd(), '/docs')
   
-  let filePaths = await getFiles(dir)
-  filePaths = filePaths.filter(filename => /^.+\.(html|js|css)$/.test(filename))
+  // let filePaths = await getFiles(dir)
+  // filePaths = filePaths.filter(filename => /^.+\.(html|js|css)$/.test(filename))
 
-  filePaths.map(filepath => {
-    let fileContent = fs.readFileSync(filepath, 'utf-8')
+  // filePaths.map(filepath => {
+  //   let fileContent = fs.readFileSync(filepath, 'utf-8')
 
-    fileContent = fileContent.replace(/\/_next\/static\/media\//g, '../media/')
+  //   fileContent = fileContent.replace(/\/_next\/static\/media\//g, '../media/')
 
-    fileContent = fileContent.replace(/\/_next\//g, './_next/')
+  //   fileContent = fileContent.replace(/\/_next\//g, './_next/')
 
-    fs.writeFileSync(filepath, fileContent, { encoding: 'utf-8' })
-  })
+  //   fs.writeFileSync(filepath, fileContent, { encoding: 'utf-8' })
+  // })
 
   fs.writeFileSync(path.join(dir, '.nojekyll'), '')
 
