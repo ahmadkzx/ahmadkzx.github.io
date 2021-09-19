@@ -14,17 +14,17 @@ $gray-800: #3e3e3e;
 $gray-900: #303030;
 
 $grid-breakpoints: (
-  xs: 340px,
+  xs: 0,
   sm: 576px,
   md: 768px,
-  lg: 980px
-);
+  lg: 980px,
+) !default;
 
+// Grid containers
 $container-max-widths: (
-  xs: 340px,
   sm: 540px,
   md: 720px,
-  lg: 980px,
-);
+  lg: 960px,
+) !default;
 
 $font-family-sans-serif: 'OpenSans', sans-serif;
