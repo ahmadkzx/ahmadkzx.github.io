@@ -1,5 +1,7 @@
 Most of you had much problem before with objects validation like this:  
+
 `if (obj.avatar && obj.avatar.small && obj.avatar.small.url) {}`  
+
 in old way you should write so dirty and long conditions to validate object.  
 
 Question is how we can solve it?  
