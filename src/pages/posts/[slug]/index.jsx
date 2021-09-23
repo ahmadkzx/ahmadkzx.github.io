@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { promises as fs } from 'fs'
 import ClipboardJS from 'clipboard'
 import styles from './index.module.scss'
+import ReactMarkdown from 'react-markdown'
 import getPosts from '@/assets/utils/getPosts'
 import PostItem from '@/components/Global/PostItem'
 
@@ -41,7 +42,11 @@ export default function PostPage({ post, recentPosts }) {
 
             <img src={post.photo} className={styles['post-page-body__photo']} />
 
-            <div className={styles['post-page-body__content']}>{post.content}</div>
+            <div className={styles['post-page-body__content']}>
+              <ReactMarkdown>
+                {post.content}
+              </ReactMarkdown>
+            </div>
 
             <div className={styles['post-page-body-footer']}>
               <div className={styles['post-page-body-footer-share']}>
@@ -112,6 +117,11 @@ export async function getStaticProps({ params }) {
 
     let post = await fs.readFile(postFilePath, 'utf-8')
     post = JSON.parse(post)
+
+    // GET THIS POST CONTENT
+    const contentPath = path.join(process.cwd(), `/db/contents/${postSlug}.md`)
+    post.content = await fs.readFile(contentPath, 'utf-8')
+
 
     // GET OTHER POSTS
     const posts = await getPosts()
