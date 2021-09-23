@@ -16,7 +16,7 @@
     display: block;
     width: 100%;
     min-width: 50%;
-    min-height: 16.25rem;
+    min-height: 13.58rem;
 
     img {
       width: 100%;
@@ -32,6 +32,10 @@
     justify-content: space-between;
     flex-direction: column;
     padding: 1rem 1.5rem;
+
+    @include media-breakpoint-down('md') {
+      padding: 1rem 0;
+    }
 
     &-header__publish-date, &-header__read-duration {
       font-size: .8rem;

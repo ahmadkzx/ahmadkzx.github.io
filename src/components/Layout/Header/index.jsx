@@ -16,11 +16,6 @@ export default function Header() {
 
       <div className={styles['header-mobile-top']}>
         <div className="container">
-          <div className={styles['header-mobile-top-search']}>
-            <input type="text" className={styles['header-mobile-top-search__input']} placeholder="Search..." />
-            <i className={`ti-search ${styles['header-mobile-top-search__icon']}`}></i>
-          </div>
-
           <div className={styles['header-mobile-top-nav']}>
             <button className={styles['header-mobile-top-nav__btn']} onClick={() => setIsShowNavMenu(!isShowNavMenu)}>
               {isShowNavMenu ? <i className="ti-close"></i> : <i className="ti-menu"></i>}
