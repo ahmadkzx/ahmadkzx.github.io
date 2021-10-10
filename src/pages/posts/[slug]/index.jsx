@@ -4,8 +4,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { promises as fs } from 'fs'
 import ClipboardJS from 'clipboard'
+import Markdown from 'markdown-to-jsx'
 import styles from './index.module.scss'
-import ReactMarkdown from 'react-markdown'
 import getPosts from '@/assets/utils/getPosts'
 import PostItem from '@/components/Global/PostItem'
 
@@ -43,9 +43,9 @@ export default function PostPage({ post, recentPosts }) {
             <img src={post.photo} className={styles['post-page-body__photo']} />
 
             <div className={styles['post-page-body__content']}>
-              <ReactMarkdown>
+              <Markdown>
                 {post.content}
-              </ReactMarkdown>
+              </Markdown>
             </div>
 
             <div className={styles['post-page-body-footer']}>
