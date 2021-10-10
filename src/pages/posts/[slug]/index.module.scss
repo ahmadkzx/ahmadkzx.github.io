@@ -40,6 +40,14 @@
       font-weight: 300;
       line-height: 1.5rem;
 
+      li {
+        margin-bottom: .5rem;
+      }
+
+      pre {
+        overflow-y: hidden;
+      }
+
       code {
         padding: .5rem;
         border-radius: .3rem;
